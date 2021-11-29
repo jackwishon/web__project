@@ -92,20 +92,15 @@ if(isset($_POST['submit'])) {
     <div class="contact__box">
         <form action="" method="POST" class="login-email">
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
-            <!-- USERNAME -->
-            <div class="input-group">
-                <input type="username" placeholder="username" required>
-            </div>
+			<!-- USERNAME -->
+			<input type="text" class="input-field" placeholder="username" required>
             <!-- PASSWORD -->
-            <div class="input-group">
-                <input type="password" placeholder="password" required>
-            </div>
+            <input type="text" class="input-field" placeholder="password" required>
             <!-- BUTTON -->
             <div class="input-group">
-                <button name="submit" class="form__btn">login</button>
+                <button type="button" name="submit" class="form__btn">login</button>
             </div>
         </form>
-
         
     </div>
 
