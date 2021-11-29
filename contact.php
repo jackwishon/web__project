@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport"
 	content="width=device-width,initial-scale=1.0">
-	<title>Menu</title>
+	<title>Contact</title>
 	<link rel="stylesheet" href="style.css" />
 	<link 
 		rel="stylesheet" 
@@ -35,17 +35,17 @@
 					</a>
 				</li>
 				<li class="navbar__item">
-					<a href="/menu.html" class="navbar__links">
+					<a href="/menu.php" class="navbar__links">
 					menu
 					</a>
 				</li>
 				<li class="navbar__item">
-					<a href="/about.html" class="navbar__links">
+					<a href="/about.php" class="navbar__links">
 					about
 					</a>
 				</li>
 				<li class="navbar__item">
-					<a href="/contact.html" class="navbar__links">
+					<a href="/contact.php" class="navbar__links">
 					contact
 					</a>
 				</li>
@@ -61,15 +61,25 @@
 	<!-- MAIN -->
 	<div class="main">
 		<div class="main__container">
-            <div class="main__content">
-				<h1>good drinks</h1>
-				<h2>menu</h2>
-                <p>drink up</p>
-            </div>
+			<div class="main__content">
+				
+			</div>
 			<div class="main__img--container">
-				<img src="images/bar_menu.png" alt="pic" id="main__img">
+				<img src="images/contact_pic.svg" alt="pic" id="main__img">
 			</div>
 		</div>
+    </div>
+
+    <div class="contact__box">
+
+            <form>
+                <input type="text" class="input-field" placeholder="Your Name">
+                <input type="text" class="input-field" placeholder="Your Email">
+                <input type="text" class="input-field" placeholder="Subject">
+                    <textarea type="text" class="input-field textarea-field" placeholder="Your Message"></textarea>
+                <button type="button" class="form__btn">Send Message</button>
+            </form>
+        
     </div>
 
     <!-- FOOTER -->

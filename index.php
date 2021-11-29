@@ -35,17 +35,17 @@
 					</a>
 				</li>
 				<li class="navbar__item">
-					<a href="/menu.html" class="navbar__links">
+					<a href="/menu.php" class="navbar__links">
 					menu
 					</a>
 				</li>
 				<li class="navbar__item">
-					<a href="/about.html" class="navbar__links">
+					<a href="/about.php" class="navbar__links">
 					about
 					</a>
 				</li>
 				<li class="navbar__item">
-					<a href="/contact.html" class="navbar__links">
+					<a href="/contact.php" class="navbar__links">
 					contact
 					</a>
 				</li>
