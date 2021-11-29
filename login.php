@@ -1,10 +1,40 @@
+<?php
+
+include 'config.php';
+
+session_start();
+
+error_reporting(0);
+
+
+if(isset($_SESSION['username'])) {
+    header("Location: recipes.php");
+}
+
+if(isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
+
+    $sql = "SELECT * FROM users where username ='$username' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+    if($result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($reult);
+        $_SESSION['username'] = $row['username'];
+        header("Location: recipes.php");
+    } else {
+        echo "<script>alert('Incorrect username or password')</script>";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport"
 	content="width=device-width,initial-scale=1.0">
-	<title>Contact</title>
+	<title>Login</title>
 	<link rel="stylesheet" href="style.css" />
 	<link 
 		rel="stylesheet" 
@@ -50,36 +80,43 @@
 					</a>
 				</li>
 				<li class="navbar__btn">
-					<a href="/login.php" class="button">
+					<a href="/" class="button">
 					login
 					</a>
 				</li>
 			</ul>
 		</div>
-	</nav>
+    </nav>
+    
+    <!-- LOGIN FORM -->
+    <div class="contact__box">
+        <form action="" method="POST" class="login-email">
+            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
+            <!-- USERNAME -->
+            <div class="input-group">
+                <input type="username" placeholder="username" required>
+            </div>
+            <!-- PASSWORD -->
+            <div class="input-group">
+                <input type="password" placeholder="password" required>
+            </div>
+            <!-- BUTTON -->
+            <div class="input-group">
+                <button name="submit" class="form__btn">login</button>
+            </div>
+        </form>
+
+        
+    </div>
 
 	<!-- MAIN -->
 	<div class="main">
 		<div class="main__container">
-			<div class="main__content">
-				
-			</div>
+			
 			<div class="main__img--container">
-				<img src="images/contact_pic.svg" alt="pic" id="main__img">
+				<img src="images/pic1.svg" alt="pic" id="main__img">
 			</div>
 		</div>
-    </div>
-
-    <div class="contact__box">
-
-            <form>
-                <input type="text" class="input-field" placeholder="Your Name">
-                <input type="text" class="input-field" placeholder="Your Email">
-                <input type="text" class="input-field" placeholder="Subject">
-                    <textarea type="text" class="input-field textarea-field" placeholder="Your Message"></textarea>
-                <button type="button" class="form__btn">Send Message</button>
-            </form>
-        
     </div>
 
     <!-- FOOTER -->

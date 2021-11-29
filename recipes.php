@@ -1,10 +1,21 @@
+<?php
+
+session_start();
+
+if(!isset($_SESSION['username'])) {
+    header("Location: index.html");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport"
 	content="width=device-width,initial-scale=1.0">
-	<title>Contact</title>
+	<title>Good Drinks</title>
 	<link rel="stylesheet" href="style.css" />
 	<link 
 		rel="stylesheet" 
@@ -62,24 +73,14 @@
 	<div class="main">
 		<div class="main__container">
 			<div class="main__content">
-				
+				<h1>good drinks</h1>
+				<h2>mock bar</h2>
+				<button class="main__btn"><a href="/">get started</a></button>
 			</div>
 			<div class="main__img--container">
-				<img src="images/contact_pic.svg" alt="pic" id="main__img">
+				<img src="images/pic1.svg" alt="pic" id="main__img">
 			</div>
 		</div>
-    </div>
-
-    <div class="contact__box">
-
-            <form>
-                <input type="text" class="input-field" placeholder="Your Name">
-                <input type="text" class="input-field" placeholder="Your Email">
-                <input type="text" class="input-field" placeholder="Subject">
-                    <textarea type="text" class="input-field textarea-field" placeholder="Your Message"></textarea>
-                <button type="button" class="form__btn">Send Message</button>
-            </form>
-        
     </div>
 
     <!-- FOOTER -->
