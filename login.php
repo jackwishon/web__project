@@ -1,5 +1,92 @@
 <?php
 
+define( 'DB_NAME', 'jwishon1');
+define( 'DB_USER', 'jwishon1');
+define( 'DB_PASSWORD', 'jwishon1');
+define( 'DB_HOST', 'localhost');
+
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die("connection failed: ".mysqli_error());
+
+if(isset($_COOKIE["type"]))
+{
+ header("location:week7.php");
+}
+
+$message = '';
+
+if(isset($_POST["week7Login"]))
+{
+ if(empty($_POST["username"]) || empty($_POST["password"]))
+ {
+  $message = "<div class='alert alert-danger'>Both Fields are required</div>";
+ }
+ else
+ {
+  $query = "
+  SELECT * FROM user 
+  WHERE username = :username
+  ";
+  $statement = $conn->prepare($query);
+  $statement->execute(
+   array(
+    'username' => $_POST["username"]
+   )
+  );
+  $count = $statement->rowCount();
+  if($count > 0)
+  {
+   $result = $statement->fetchAll();
+   foreach($result as $row)
+   {
+    if(password_verify($_POST["password"], $row["password"]))
+    {
+     setcookie("type", $row["id"], time()+3600);
+     header("location:week7.php");
+    }
+    else
+    {
+     $message = '<div class="alert alert-danger">Wrong Password</div>';
+    }
+   }
+  }
+  else
+  {
+   $message = "<div class='alert alert-danger'>Wrong Username</div>";
+  }
+ }
+}
+
+
+?>
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	</head>
+	<body>
+		<div class="container">
+			<div class="panel-body">
+				<span><?php echo $message; ?></span>
+			</div>
+
+			<form method="post">
+				<label>Username</label><br>
+					<input type="text" name="username"><br>
+				<label>Password</label><br>
+					<input type="text" name="password"><br>
+				<input type="submit" name="week7Login" value="Submit">
+			</form>
+		</div>
+	</body>
+</html>
+
+<?php
+/*
+
 include 'config.php';
 
 session_start();
@@ -125,3 +212,4 @@ if(isset($_POST['submit'])) {
 	<script src="app.js"></script>
 </body>
 </html>
+*/
